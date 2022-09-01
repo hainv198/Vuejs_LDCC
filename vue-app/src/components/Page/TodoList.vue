@@ -3,6 +3,8 @@
       v-for="todo in todos"
       v-bind:key="todo.id"
       v-bind:props="todo"
+      @handleClick="ItemCheckBox"
+      @handleDelete="DeleteItem"
   />
 </template>
 
@@ -31,14 +33,24 @@ export default {
         name : "Hai ",
         address: "Me Tri",
         Phone : "01289",
-        completed: true
+        completed: false
       },
     ])
+    const ItemCheckBox = id => {
+      todos.value = todos.value.map((todo) => {
+        if(todo.id === id) todo.completed = !todo.completed
+        return todo
+      })
+    }
+    const DeleteItem = id => {
+      todos.value = todos.value.filter(todo => todo.id !== id)
+    }
     return {
-      todos:todos
+      todos:todos,
+      ItemCheckBox,
+      DeleteItem
     }
   }
-
 }
 </script>
 
