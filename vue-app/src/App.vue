@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <HeaderTodoList/>
-    <TodoList/>
+    <router-view/>
+<!--    <TodoList/>-->
   </div>
 
 </template>
